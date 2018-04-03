@@ -54,7 +54,7 @@ Response:
 
 This approach introduces an antipattern of differentiating optionally hidden (non-marshalled) properties from nulls which is naturally ambigiuos. I.e. a 'missing property' != 'null property', which is not natively supported by most JSON serialization frameworks (without reverting to custom serializers). (I'm not aware of any schema or IDL that supports this notion, and rightly so.)
 
-Thus OData is useful for piece-wise retrieval of data in a strict composition (cardinality of 1:1) where a nested object is assumed to exist /a priori/, but is awkward in a loose composition (1:0..M) or aggregation (0..N:0..M) scenarios where hiding a property means nothing to the consumer. Additionally *a priori* assumptions introduce a form of undesired coupling where semantic knowledge of the underlying data may be required and cannot be communicated by the interface contract alone.
+Thus OData is useful for piece-wise retrieval of data in a strict composition (cardinality of 1:1) where a nested object is assumed to exist _a priori_, but is awkward in a loose composition (1:0..M) or aggregation (0..N:0..M) scenarios where hiding a property means nothing to the consumer. Additionally _a priori_ assumptions introduce a form of undesired coupling where semantic knowledge of the underlying data may be required and cannot be communicated by the interface contract alone.
 
 Fix:
 Option 1. Write additional read-only "hints" in the parent object. E.g.
